@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<script>function getURLParameter(e){return decodeURI((RegExp(e+"=(.+?)(&|$)").exec(location.search)||[,null])[1]||"")}var pixel=getURLParameter("pixel");!function(e,t,n,a,c,r,s){e.fbq||(c=e.fbq=function(){c.callMethod?c.callMethod.apply(c,arguments):c.queue.push(arguments)},e._fbq||(e._fbq=c),c.push=c,c.loaded=!0,c.version="2.0",c.queue=[],(r=t.createElement(n)).async=!0,r.src="https://connect.facebook.net/en_US/fbevents.js",(s=t.getElementsByTagName(n)[0]).parentNode.insertBefore(r,s))}(window,document,"script"),fbq("init",pixel),fbq("track","ViewContent"),function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid="+pixel;var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();</script>
+    <noscript><img height='1' width='1' style='display:none'
+            src='https://www.facebook.com/tr?id=24577000421944779&ev=PageView&noscript=1' /></noscript>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&subset=latin-ext" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="b-question">
+    <div class="title-question"> ¿Tienes más de 30 años? </div>
+    <div class="text-justify">
+    <a id="ya" class="button m-red" href="#" > Sí </a>
+    <a id="tidak" class="button m-red" href="#" > No </a>
+    </div>
+    </div>
+    <script src="js/js.cookie.min.js" type="text/javascript"></script>
+
+<script>
+  // Ambil semua parameter dari URL
+  function getAllParameters(url) {
+    if (!url) url = window.location.href;
+    var params = {};
+    var queryString = url.split('?')[1];
+    if (queryString) {
+      var pairs = queryString.split('&');
+      for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        var key = decodeURIComponent(pair[0]);
+        var value = decodeURIComponent(pair[1] || '');
+        params[key] = value;
+      }
+    }
+    return params;
+  }
+
+  // Ambil elemen <a> dengan ID
+  var buttonYa = document.getElementById('ya');
+  var buttonTidak = document.getElementById('tidak');
+
+  // Fungsi yang akan dipanggil saat elemen diklik
+  function handleClick(event) {
+    // Cegah perilaku default dari elemen <a>
+    event.preventDefault();
+
+    // Ambil semua parameter dari URL
+    var allParameters = getAllParameters();
+
+    // Buat URL baru dengan menambahkan semua parameter
+    var newUrl = 'https://karina.stimme.store/y4dTKY?';
+    for (var key in allParameters) {
+      newUrl += encodeURIComponent(key) + '=' + encodeURIComponent(allParameters[key]) + '&';
+    }
+
+    // Hapus karakter '&' yang tidak diperlukan di akhir URL
+    newUrl = newUrl.slice(0, -1);
+
+    // Arahkan pengguna ke link baru
+    window.location.href = newUrl;
+  }
+
+  // Tambahkan event listener untuk memanggil handleClick saat elemen diklik
+  buttonYa.addEventListener('click', handleClick);
+  buttonTidak.addEventListener('click', handleClick);
+</script>
+
+
+   </div>
+   </body>
+   </html>
