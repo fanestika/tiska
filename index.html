@@ -17,53 +17,65 @@
       <a id="tidak" class="m-red" href="#"> No </a>
     </div>
   </div>
+<script>
+  // Ambil elemen tombol berdasarkan ID
+  var buttonYa = document.getElementById('ya');
+  var buttonTidak = document.getElementById('tidak');
 
-  <script>
-    var buttonYa = document.getElementById('ya');
-    var buttonTidak = document.getElementById('tidak');
-    function handleClick(event) {
-      event.preventDefault();
-      var allParameters = getAllParameters();
-      var source = allParameters['source'];
-      var newUrl;
+  // Fungsi untuk menangani klik tombol
+  function handleClick(event) {
+    event.preventDefault();
+    var allParameters = getAllParameters();
+    var source = allParameters['source'];
+    var newUrl;
 
-      if (source === '01') {
-        newUrl = 'https://gelika.site/cdmzl1k.php';
-      } else if (source === '02') {
-        newUrl = 'https://margareta.stimme.store/5kvvLTKn?';
-      } else if (source === '03') {
-        newUrl = 'https://refita.stimme.store/fP5nw4PH?';
-      } else {
-        newUrl = 'https://gelika.site/cdmzl1k.php?';
+    // Tentukan URL tujuan berdasarkan parameter 'source'
+    if (source === 'inu') {
+      newUrl = 'https://gelika.site/cdmzl1k.php';
+    } else if (source === 'umar') {
+      newUrl = 'https://oemar.com';
+    } else {
+      newUrl = 'https://gelika.site/cdmzl1k.php?'; // URL default jika source tidak dikenal
+    }
+
+    // Tambahkan semua parameter ke URL baru (kecuali 'source')
+    for (var key in allParameters) {
+      if (key !== 'source') {
+        newUrl += encodeURIComponent(key) + '=' + encodeURIComponent(allParameters[key]) + '&';
       }
-
-      for (var key in allParameters) {
-        if (key !== 'source') {
-          newUrl += encodeURIComponent(key) + '=' + encodeURIComponent(allParameters[key]) + '&';
-        }
-      }
-
-      newUrl = newUrl.slice(0, -1);
-
-      window.location.href = newUrl;
     }
 
-    if (buttonYa) {
-      buttonYa.addEventListener('click', handleClick);
-    }
+    // Hapus karakter '&' terakhir
+    newUrl = newUrl.slice(0, -1);
 
-    if (buttonTidak) {
-      buttonTidak.addEventListener('click', handleClick);
-    }
+    // Redirect ke URL baru
+    window.location.href = newUrl;
+  }
 
-    function getAllParameters() {
-      var searchParams = new URLSearchParams(window.location.search);
-      var params = {};
-      searchParams.forEach(function (value, key) {
-        params[key] = value;
-      });
-      return params;
-    }
-  </script>
+  // Tambahkan event listener jika tombol ditemukan
+  if (buttonYa) {
+    buttonYa.addEventListener('click', handleClick);
+  } else {
+    console.warn('Tombol Ya tidak ditemukan di DOM.');
+  }
+
+  if (buttonTidak) {
+    buttonTidak.addEventListener('click', handleClick);
+  } else {
+    console.warn('Tombol Tidak tidak ditemukan di DOM.');
+  }
+
+  // Fungsi untuk mendapatkan semua parameter dari URL
+  function getAllParameters() {
+    var searchParams = new URLSearchParams(window.location.search);
+    var params = {};
+    searchParams.forEach(function (value, key) {
+      params[key] = value;
+    });
+    return params;
+  }
+</script>
+
+  
 </body>
 </html>
