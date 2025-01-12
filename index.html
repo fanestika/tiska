@@ -35,7 +35,12 @@
     } else if (source === 'umar') {
       newUrl = 'https://oemar.com';
     } else {
-      newUrl = 'https://gelika.site/cdmzl1k.php?'; // URL default jika source tidak dikenal
+      newUrl = 'https://gelika.site/cdmzl1k.php'; // URL default jika source tidak dikenal
+    }
+
+    // Pastikan URL memiliki tanda "?"
+    if (!newUrl.includes('?')) {
+      newUrl += '?';
     }
 
     // Tambahkan semua parameter ke URL baru (kecuali 'source')
